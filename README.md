@@ -14,28 +14,19 @@ represents 1 minute.
 
 One can be seen [here](http://uniqueclocks.co.uk/media/berlin~clock.jpg~1.gif)
 
-## The brief
-
-We have created a number of acceptance tests for the Berlin Clock and your challenge is to get them passing.
-
-## Some hints
-If you are new to Gradle, it may be worth spending 10 minutes reading a high level summary.  We are using the Gradle
-Wrapper so `gradlew` from the command line should download everything you need.  Most modern IDEs support Gradle projects.
-
-The use of JBehave in this instance is to provide you with our definition of done for the task.
-
-Please ensure that you are familiar with our values in the instructions project.  They are important to us.
 
 # Description of implementation
-- Created below classes
--- TimeConverterImpl - This class converts String time into Berlin Clock Format
--- BerlinHoursConverter - This class converts String hours into Berlin Clock Hour Format
--- BerlinMinutesConverter - This class converts String minutes into Berlin Clock Minutes Format
--- BerlinSecondsConverter - This class converts String Seconds into Berlin Clock Seconds Format
 
+## Created below classes
+- TimeConverterImpl -> This class converts String time into Berlin Clock Format
+- BerlinHoursConverter -> This class converts String hours into Berlin Clock Hour Format
+- BerlinMinutesConverter -> This class converts String minutes into Berlin Clock Minutes Format
+- BerlinSecondsConverter -> This class converts String Seconds into Berlin Clock Seconds Format
+- DateTimeUtils -> Utility class to convert String format time into Objects
 
-One of the scenario mentioned in berlin-clock.story file looks incorrect. The scenario looks to test time 24:00:00 which to my understanding is an invalid time. In a day a clock can show 23:59:59 and at the stroke of midnight the clock shows 00:00:00.
+One of the scenario mentioned in *berlin-clock.story* file looks incorrect. 
+The scenario looks to test time 24:00:00 which to my understanding is an invalid time. In a day a clock can show 23:59:59 and at the stroke of midnight the clock shows 00:00:00.
 
-I initally implemented using Calendar class to parse String time but since Calendar will never parse 24:00:00 into 24 hours so then I used String split method to get 24 hours value
+I initially implemented using Time parser using Calendar class but since Calendar will parse 24:00:00 into 00:00:00 which was breaking one of the scenario test so then I used String spliter to get the value of HH, mm and ss
 
 The time converter is written in DateTimeUtils class.
